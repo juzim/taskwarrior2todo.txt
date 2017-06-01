@@ -5,6 +5,7 @@ import json
 import argparse
 import datetime
 import logging
+import re
 from pprint import pprint
 from dateutil.parser import parse
 
@@ -23,9 +24,9 @@ def main():
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     parser.add_argument('-i', '--input', required=True, help='input json file')
-    parser.add_argument('-o', '--output', required=True, help='output destination')
-    parser.add_argument('-a', '--archive', help='archive destination, otherwise completed tasks are stored in the same file')
-    parser.add_argument('-s', '--skipCompleted', help='Ignore already comlpeted tasks', action="store_true")
+    parser.add_argument('-o', '--output', required=True, help='output location')
+    parser.add_argument('-a', '--archive', help='archive location, otherwise completed tasks are stored in the same file')
+    parser.add_argument('-s', '--skipCompleted', help='Ignore already completed tasks', action="store_true")
     parser.add_argument('-ns', '--noSort', help='Do not sort the results', action="store_true")
 
     args = parser.parse_args()
@@ -70,14 +71,22 @@ def main():
 
         stringParts.append('{description}')
 
-        if 'project' in entry:
-            stringParts.append('+' + entry['project'])
-
         description = entry['description']
+
+        if 'project' in entry:
+            projectName = entry['project']
+            pattern = r"\b" + projectName + r"\b"
+
+            if re.search(pattern, description, flags=re.IGNORECASE):
+                    description = re.sub(pattern, '+' + projectName, description)
+            else:
+                stringParts.append('+' + projectName)
+
         if 'tags' in entry:
             for tag in entry['tags']:
-                if tag in description:
-                    description = description.replace(tag, '@' + tag, 1)
+                pattern = r"\b" + tag + r"\b"
+                if re.search(pattern, description, flags=re.IGNORECASE):
+                    description = re.sub(pattern, '@' + tag, description)
                 else:
                     stringParts.append('@' + tag)
 
