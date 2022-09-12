@@ -20,7 +20,7 @@ def main():
     logger.setLevel(logging.DEBUG)
 
     parser = argparse.ArgumentParser(
-        description='Convert taskwarrior exports to toto.txt format',
+        description='Convert taskwarrior Json exports to todo.txt format',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     parser.add_argument('-i', '--input', required=True, help='input json file')
