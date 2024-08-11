@@ -13,19 +13,19 @@ Converts [taskwarrior](https://taskwarrior.org) exports to [todo.txt](http://tod
 
 ```python3 -m venv .venv```
 
-1. Activate the environment:
+2. Activate the environment:
 
 ```source .venv/bin/activate```
 
-1. Install required packages:
+3. Install required packages:
 
 ```pip install -r requirements.txt```
 
-1. Export your taskwarrior tasks
+4. Export your taskwarrior tasks
 
 ```task export > export.json```
 
-1. Then convert them
+5. Then convert them
 
 ```python3 convert.py -i export.json -o todo.txt -a done.txt```
 
