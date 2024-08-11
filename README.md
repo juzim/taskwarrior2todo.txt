@@ -9,7 +9,7 @@ Converts [taskwarrior](https://taskwarrior.org) exports to [todo.txt](http://tod
 
 ## Usage
 
-1. Navigate to this project's directory and start a Python virtual environment:
+1. Navigate to this project's directory and create a Python virtual environment:
 
 ```python3 -m venv .venv```
 
