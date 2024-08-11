@@ -18,12 +18,8 @@ Then convert them
 
 ## Options
 
-'-i', '--input'         => input json file
-
-'-o', '--output'        => output location
-
-'-a', '--archive'       => archive location, otherwise completed tasks are stored in the same file
-
-'-s', '--skipCompleted' => ignore completed tasks
-
-'-ns', '--noSort'       => do not sort the results
+* `-i`, `--input`         => input json file
+* `-o`, `--output`        => output location
+* `-a`, `--archive`       => archive location, otherwise completed tasks are stored in the same file
+* `-s`, `--skipCompleted` => ignore completed tasks
+* `-ns`, `--noSort`       => do not sort the results
