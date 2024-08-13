@@ -8,22 +8,31 @@ Converts [taskwarrior](https://taskwarrior.org) exports to [todo.txt](http://tod
 * inlines projects and contexts if possible ("Tell Steve to do the thing", tags:Steve,bullying, project:thing" => "Tell @Steve to do the +thing @bullying")
 
 ## Usage
-Export your taskwarrior tasks
+
+1. Navigate to this project's directory and create a Python virtual environment:
+
+```python3 -m venv .venv```
+
+2. Activate the environment:
+
+```source .venv/bin/activate```
+
+3. Install required packages:
+
+```pip install -r requirements.txt```
+
+4. Export your taskwarrior tasks
 
 ```task export > export.json```
 
-Then convert them
+5. Then convert them
 
 ```python3 convert.py -i export.json -o todo.txt -a done.txt```
 
 ## Options
 
-'-i', '--input'         => input json file
-
-'-o', '--output'        => output location
-
-'-a', '--archive'       => archive location, otherwise completed tasks are stored in the same file
-
-'-s', '--skipCompleted' => ignore completed tasks
-
-'-ns', '--noSort'       => do not sort the results
+* `-i`, `--input`         => input json file
+* `-o`, `--output`        => output location
+* `-a`, `--archive`       => archive location, otherwise completed tasks are stored in the same file
+* `-s`, `--skipCompleted` => ignore completed tasks
+* `-ns`, `--noSort`       => do not sort the results

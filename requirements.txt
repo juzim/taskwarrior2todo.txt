@@ -1,0 +1,7 @@
+DateTime==5.5
+logging==0.4.9.6
+python-dateutil==2.9.0.post0
+pytz==2024.1
+setuptools==72.1.0
+six==1.16.0
+zope.interface==7.0.1
